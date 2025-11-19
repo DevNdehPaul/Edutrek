@@ -1,0 +1,41 @@
+.btn1 {
+    border-radius: 50px;
+    background-color: blue;
+    margin: 5px;
+}
+.btn2 {
+    border-radius: 50px;
+    background-color: blue;
+    
+}
+.btn3 {
+    border-radius: 50px;
+    background-color: blue;
+    
+}
+.nav-link1 {
+    color: blue;
+}
+.footer {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+.text{
+    color: white;
+}
+.card1{
+    border-radius: 30px;
+    font-weight: bolder;
+}
+.text1{
+    color: white;
+    font-weight: bolder;
+}
+.card2{
+    box-shadow: 5px 5px rgb(0, 0, 0,0.2);
+}
+.input1{
+    border: 2px black solid;
+    border-radius: 10px;
+    margin-left: 0px;
+}
