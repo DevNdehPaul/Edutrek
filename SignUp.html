@@ -64,42 +64,66 @@
     <div class="container">
         <h3 style="font-weight: bolder; ">Create Account</h3>
         <p style="font-weight: bolder; ">To Enjoy Online Quality Education</p>
-        <form action="">
-            <div class="row">
-                <div class="col-6">
-            <label for="text" style="font-weight: bolder;">First Name</label><br>
-            <input type="text" class="input"><br><br>
-            <label for="text" style="font-weight: bolder;">Email or Phone Number</label><br>
-            <input type="text" class="input"><br><br>
-            <label for="text" style="font-weight: bolder;">Password</label><br>
-            <input type="password" class="input"><br><br>
-            <span><input type="checkbox"> Remember Me</span><br><br>
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-10"><input type="submit" value="Create Account" style="background-color: blue; color: white; border: none; font-weight: bolder; padding: 5px;" class="input"></div>
-                <div class="col-1"></div>
-            </div>
-                </div>
-                <div class="col-6">
-                    <label for="text" style="font-weight: bolder;">Last Name</label><br>
-            <input type="text" class="input"><br><br>
-            <label for="text" style="font-weight: bolder;">Date of Birth</label><br>
-            <input type="date" class="input"><br><br>
-            <label for="text" style="font-weight: bolder;">Confirm Password</label><br>
-            <input type="password" class="input"><br><br>
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-2"></div>
-                <div class="col-8"><a href="#" style="text-decoration: underline; text-align: right;">forgot password?</a><br><br></div>
-            </div>
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-10"><button style="background-color: black; color: white; border: none; font-weight: bolder; padding: 5px;" class="input"><span class="fab fa-google" style="color: white; margin-right: 7px;"></span>Google</button>
-                <div class="col-1"></div>
-            </div>
-                </div>
-            </div>
-        </form><br><br><br>
+       <form id="signupForm" action="">
+  <div class="row">
+    <div class="col-6">
+      <label for="firstName" style="font-weight: bolder;">First Name</label><br>
+      <input type="text" id="firstName" name="firstName" class="input" required><br><br>
+
+      <label for="email" style="font-weight: bolder;">Email or Phone Number</label><br>
+      <input type="email" id="email" name="email" class="input" required><br><br>
+
+      <label for="password" style="font-weight: bolder;">Password</label><br>
+      <input type="password" id="password" name="password" class="input" minlength="6" required><br><br>
+
+      <span>
+        <input type="checkbox" id="rememberMe" name="rememberMe"> Remember Me
+      </span><br><br>
+
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <input type="submit" value="Create Account"
+                 style="background-color: blue; color: white; border: none; font-weight: bolder; padding: 5px;"
+                 class="input">
+        </div>
+        <div class="col-1"></div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <label for="lastName" style="font-weight: bolder;">Last Name</label><br>
+      <input type="text" id="lastName" name="lastName" class="input" required><br><br>
+
+      <label for="dob" style="font-weight: bolder;">Date of Birth</label><br>
+      <input type="date" id="dob" name="dob" class="input" required><br><br>
+
+      <label for="confirmPassword" style="font-weight: bolder;">Confirm Password</label><br>
+      <input type="password" id="confirmPassword" name="confirmPassword" class="input" minlength="6" required><br><br>
+
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-8">
+          <a href="#" style="text-decoration: underline; text-align: right;">forgot password?</a><br><br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <button type="button"
+                  style="background-color: black; color: white; border: none; font-weight: bolder; padding: 5px;"
+                  class="input">
+            <span class="fab fa-google" style="color: white; margin-right: 7px;"></span>Google
+          </button>
+        </div>
+        <div class="col-1"></div>
+      </div>
+    </div>
+  </div>
+</form>
+
     </div><br>
     <p style="text-align: center;">Already have an Account? <a href="Login.html">Log in</a></p>
 </div>
@@ -162,4 +186,44 @@
         </div>
     </div>
 </footer>
+<script>
+  // Get the form element
+  const form = document.getElementById("signupForm");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent page reload
+
+    // Collect values from inputs
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const dob = document.getElementById("dob").value;
+    const rememberMe = document.getElementById("rememberMe").checked;
+
+    // Simple check for password match
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    // Create an object with the data
+    const userData = {
+      firstName,
+      lastName,
+      email,
+      password,
+      dob,
+      rememberMe
+    };
+
+    // Store in localStorage
+    localStorage.setItem("userData", JSON.stringify(userData));
+
+    alert("Account created successfully! Data stored locally.");
+    form.reset(); // clear the form
+  });
+</script>
+
 </html>
