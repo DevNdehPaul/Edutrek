@@ -157,4 +157,32 @@
         </div>
     </div>
 </footer>
+<script>
+  // Select the login form
+  const loginForm = document.querySelector("form");
+
+  loginForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent page reload
+
+    // Get input values
+    const email = loginForm.querySelector("input[type='email']").value;
+    const password = loginForm.querySelector("input[type='password']").value;
+
+    // Retrieve stored user data from localStorage
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+
+    if (storedData) {
+      // Compare input with stored data
+      if (email === storedData.email && password === storedData.password) {
+        // Redirect to Account.html
+        window.location.href = "Account.html";
+      } else {
+        alert("Wrong Password or Email");
+      }
+    } else {
+      alert("No account found. Please sign up first.");
+    }
+  });
+</script>
+
 </html>
