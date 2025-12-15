@@ -82,7 +82,7 @@
         <div class="col-10">
           <input type="submit" value="Create Account"
                  style="background-color: blue; color: white; border: none; font-weight: bolder; padding: 5px;"
-                 class="input">
+                 class="input" id="signupForm">
         </div>
         <div class="col-1"></div>
       </div>
@@ -179,7 +179,7 @@
   // Get the form element
   const form = document.getElementById("signupForm");
 
-  form.addEventListener("submit", function(event) {
+  form.addEventListener("click", function(event) {
     event.preventDefault(); // prevent page reload
 
     // Collect values from inputs
